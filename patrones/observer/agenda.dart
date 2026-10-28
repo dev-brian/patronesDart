@@ -1,18 +1,23 @@
-import 'notificador.dart';
-import 'panel-alumno.dart';
+import 'observador.dart';
 
 class Agenda {
-  final PanelAlumno panel = PanelAlumno();
-  final Notificador notificador = Notificador();
+  final List<Observador> _observadores = [];
+
+  void suscribir(Observador observador) {
+    _observadores.add(observador);
+  }
+
+  void desuscribir(Observador observador) {
+    _observadores.remove(observador);
+  }
 
   void publicarTarea(String tarea) {
     print('Publicando: $tarea');
 
-    panel.mostrar(tarea);
-    notificador.notificar(tarea);
-
-    // Problema: la agenda publica tareas y además coordina
-    // la UI y las notificaciones (demasiadas responsabilidades)
-    // Agregar o quitar un servicio obliga a modificar esta clase
+    // La agenda ya no conoce a cada servicio,
+    // solo avisa a quienes estén suscritos
+    for (final observador in _observadores) {
+      observador.actualizar(tarea);
+    }
   }
 }
