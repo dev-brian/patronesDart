@@ -15,6 +15,7 @@ Los ejemplos se basan en los vistos en la clase de patrones de diseño.
 | Adapter (encargo) | `patrones/adapter/invernadero/` | Adapta un sensor en Fahrenheit a un contrato en Celsius. |
 | Observer | `patrones/observer/` | La agenda notifica a los servicios suscritos cuando hay una nueva tarea. |
 | Facade | `patrones/facade/` | Una sola clase agrupa los pasos para usar varios subsistemas. |
+| Command | `patrones/command/` | Cada acción es un objeto que sabe ejecutarse y deshacerse; un controlador guarda el historial. |
 
 ## Ejecutar
 
